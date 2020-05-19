@@ -2,10 +2,10 @@
 Project, study about React
 
 # Environment
-node: v12.16.3
-npm: v6.14.4
-yarn: 1.22.4
-Editor: Visual Studio Code(Get Extension programs on Marketplace: ESLint, Reactjs Code Snippets, Prettier-Code formatter)
+* node: v12.16.3
+* npm: v6.14.4
+* yarn: 1.22.4
+* Editor: Visual Studio Code(Get Extension programs on Marketplace: ESLint, Reactjs Code Snippets, Prettier-Code formatter)
 
 
 # Create a project with create-react-app
