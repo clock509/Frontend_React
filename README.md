@@ -11,20 +11,23 @@ Project, study about React
 # Create a project with create-react-app
 1. Open terminal.
 
+
 2. Move to any directory where you want to create your project.
     
-    $ cd your-Directory
+    # $ cd your-Directory
+
 
 3. Create your project like below. You can set your project('PROJECT-NAME') name as you want.
     
-    $ yarn create react-app PROJECT-NAME
+    # $ yarn create react-app PROJECT-NAME
     
    or you can type...
     
-    $ npm init react-app PROJECT-NAME
+    # $ npm init react-app PROJECT-NAME
+    
     
 4. After 3, move to your project directory and start your react server.
     
-    $ cd PROJECT-NAME
+    # $ cd PROJECT-NAME
     
-    $ yarn start #or npm start
+    # $ yarn start #or npm start
