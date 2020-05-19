@@ -9,15 +9,15 @@ Project, study about React
 
 
 # Create a project with create-react-app
-## **1. Open terminal.**
+**1. Open terminal.**
 
 
-## **2. Move to any directory where you want to create your project.**
+**2. Move to any directory where you want to create your project.**
     
     $ cd your-Directory
 
 
-## **3. Create your project like below. You can set your project('PROJECT-NAME') name as you want.**
+**3. Create your project like below. You can set your project('PROJECT-NAME') name as you want.**
     
     $ yarn create react-app PROJECT-NAME
     
@@ -25,8 +25,8 @@ Project, study about React
     
     $ npm init react-app PROJECT-NAME
     
-    
-## **4. After 3, move to your project directory and start your react server.**
+
+**4. After 3, move to your project directory and start your react server.**
     
     $ cd PROJECT-NAME
     
