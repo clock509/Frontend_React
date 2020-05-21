@@ -175,7 +175,7 @@ const App = () => {
 // const[object, setObject] = useState({ a: 1, b: 1});
 // object.b = 2;
 
-//배얼이나 객체를 업데이트하려면: 배열 또는 객체의 사본을 만들고 그 사본에 값을 업데이트 한 후, 그 사본의 상태럴 seState 또는 setter 함수를 통해 업데이트한다.
+//배열이나 객체를 업데이트하려면: 배열 또는 객체의 사본을 만들고 그 사본에 값을 업데이트 한 후, 그 사본의 상태럴 seState 또는 setter 함수를 통해 업데이트한다.
 //(1)객체의 예시
 // const object = {a:1, b:2, c:3};
 // const nextObject = { ...object, b:2}
