@@ -13,17 +13,17 @@ import MyComponent from './MyComponent'; //실습에 사용될 MyComponent.js의
 // (1)클래스형 컴포넌트 
 // state 기능 및 라이프사이클 기능을 사용할 수 있고, 임의 메서드를 정할 수 있음.
 // render 함수가 꼭 있어야 하고, 그 안에서 보여 주어야 할 JSX를 리턴해야 함.
-function App() {
-  const name = 'React';
-  return <div className="react"> {name} </div>;
-} 
-// (2)함수형 컴포넌트
 class App extends Component {
   render() {
     const name = 'react';
     return <div className="react"> {name} </div>;
   }
-} 
+}
+// (2)함수형 컴포넌트
+function App() {
+  const name = 'React';
+  return <div className="react"> {name} </div>;
+}
 
 /** 함수형 컴포넌트의 장, 단점
  * 장점(1): 클래스형보다 선언하기가 편함.
