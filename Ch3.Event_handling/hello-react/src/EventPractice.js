@@ -13,33 +13,33 @@ class EventPractice extends Component {
 }
 
 //App.js의 3-2-2. onChange 이벤트 핸들링하기 관련 예제
-//4-2-2-1. onChange 이벤트 설정
+//3-2-2-1. onChange 이벤트 설정
 //input element를 렌더링하고 해당 element에 onChange 이벤트를 설정.
 class EventPractice extends Component {
   render() {
     return (
-    <div>
-      <h1>이벤트 연습</h1>
-      <input
-        type = "text"
-        name = "message"
-        placeholder = "아무 것이나 입력해 보세요."
-        onChange = {
-          (e) => {
-            console.log(e);
-          } //크롬 개발자 도구를 열고 input에 글자를 입력하면, 이벤트 객체가 콘솔에 나타남.
+      <div>
+        <h1>이벤트 연습</h1>
+        <input
+          type="text"
+          name="message"
+          placeholder="아무 것이나 입력해 보세요."
+          onChange={
+            (e) => {
+              console.log(e);
+            } //크롬 개발자 도구를 열고 input에 글자를 입력하면, 이벤트 객체가 콘솔에 나타남.
             //e 객체는 SyntheticEvent로 웹 브라우저의 네이티브 이벤트를 감싸는 객체.
             //SyntheticEvent는 이벤트가 끝나고 나면 이벤트가 초기화됨. 다시 말해, e 객체 내부의 모든 값이 비워지므로 정보를 참조할 수 없음.
             //만약 비동기적으로 이벤트 객체를 참조하고자 한다면, e.persist() 함수를 호출해야 한다.
-            //예를 들어, onChange 이벤트가 발생할 때, 앞으로 변할 인풋 값인 e.target.value를 콘소에 기록하려면 다음과 같이 수정하면 된다.
-        // onChange = {
-        //   (e) => {
-        //     console.log(e.target.value);
-        //   }
-        // }
-        }
-      />
-    </div>
+            //예를 들어, onChange 이벤트가 발생할 때, 앞으로 변할 인풋 값인 e.target.value를 콘솔에 기록하려면 다음과 같이 수정하면 된다.
+            // onChange = {
+            //   (e) => {
+            //     console.log(e.target.value);
+            //   }
+            // }
+          }
+        />
+      </div>
     );
   }
 }
@@ -54,15 +54,15 @@ class EventPractice extends Component {
   }
 
   render() {
-    return(
+    return (
       <div>
         <h1>이벤트 연습</h1>
         <input
-          type = "text"
-          name = "message"
-          placeholder = "아무거나 입력하세요."
-          value = {this.state.message}
-          onChange = {
+          type="text"
+          name="message"
+          placeholder="아무거나 입력하세요."
+          value={this.state.message}
+          onChange={
             (e) => {
               this.setState({
                 message: e.target.value
@@ -84,15 +84,15 @@ class EventPractice extends Component {
   }
 
   render() {
-    return(
+    return (
       <div>
         <h1>이벤트 연습</h1>
         <input
-          type = "text"
-          name = "message"
-          placeholder = "아무거나 입력하세요."
-          value = {this.state.message}
-          onChange = {
+          type="text"
+          name="message"
+          placeholder="아무거나 입력하세요."
+          value={this.state.message}
+          onChange={
             (e) => {
               this.setState({
                 message: e.target.value
@@ -100,7 +100,7 @@ class EventPractice extends Component {
             }
           }
         />
-        <button onClick ={
+        <button onClick={
           () => {
             alert(this.state.message);
             this.setState({
@@ -151,13 +151,13 @@ class EventPractice extends Component {
       <div>
         <h1>이벤트 연습</h1>
         <input
-          type = "text"
-          name = "message"
-          placeholder = "아무거나 입력해 보세요"
-          value = {this.state.message}
-          onChange = {this.handleChange}
+          type="text"
+          name="message"
+          placeholder="아무거나 입력해 보세요"
+          value={this.state.message}
+          onChange={this.handleChange}
         />
-        <button onClick = {this.handleClick}>확인</button>
+        <button onClick={this.handleClick}>확인</button>
       </div>
     );
   }
@@ -189,13 +189,13 @@ class EventPractice extends Component {
       <div>
         <h1>이벤트 연습</h1>
         <input
-          type = "text"
-          name = "message"
-          placeholder = "아무거나 입력해 보세요"
-          value = {this.state.message}
-          onChange = {this.handleChange}
+          type="text"
+          name="message"
+          placeholder="아무거나 입력해 보세요"
+          value={this.state.message}
+          onChange={this.handleChange}
         />
-        <button onClick = {this.handleClick}>확인</button>
+        <button onClick={this.handleClick}>확인</button>
       </div>
     );
   }
@@ -235,20 +235,20 @@ class EventPractice extends Component {
       <div>
         <h1>이벤트 연습</h1>
         <input
-          type = "text"
-          name = "username"
-          placeholder = "사용자명"
-          value = {this.state.username}
-          onChange = {this.handleChange}
+          type="text"
+          name="username"
+          placeholder="사용자명"
+          value={this.state.username}
+          onChange={this.handleChange}
         />
         <input
-          type = "text"
-          name = "message"
-          placeholder = "아무 것이나 입력해 보세요."
-          value = {this.state.message}
-          onChange = {this.handleChange}
+          type="text"
+          name="message"
+          placeholder="아무 것이나 입력해 보세요."
+          value={this.state.message}
+          onChange={this.handleChange}
         />
-        <button onClick = {this.handleClick}>확인</button>
+        <button onClick={this.handleClick}>확인</button>
       </div>
     )
   }
@@ -278,7 +278,7 @@ class EventPractice extends Component {
   }
 
   handleKeyPress = (e) => {
-    if(e.key === 'Enter') { //e.Key (x) 대소문자 구분 잘 할 것.
+    if (e.key === 'Enter') { //e.Key (x) 대소문자 구분 잘 할 것.
       this.handleClick();
     }
   }
@@ -288,21 +288,21 @@ class EventPractice extends Component {
       <div>
         <h1>이벤트 연습</h1>
         <input
-          type = "text"
-          name = "username"
-          placeholder = "사용자명"
-          value = {this.state.username}
-          onChange = {this.handleChange}
+          type="text"
+          name="username"
+          placeholder="사용자명"
+          value={this.state.username}
+          onChange={this.handleChange}
         />
         <input
-          type = "text"
-          name = "message"
-          placeholder = "아무거나 입력하세요."
-          value = {this.state.message}
-          onChange = {this.handleChange}
-          onKeyPress = {this.handleKeyPress}
+          type="text"
+          name="message"
+          placeholder="아무거나 입력하세요."
+          value={this.state.message}
+          onChange={this.handleChange}
+          onKeyPress={this.handleKeyPress}
         />
-        <button onClick = {this.handleClick}>확인</button>      
+        <button onClick={this.handleClick}>확인</button>
       </div>
     )
   }
@@ -330,21 +330,21 @@ const EventPractice = () => {
     <div>
       <h1>이벤트 연습</h1>
       <input
-        type = "text"
-        name = "username"
-        placeholder = "사용자명"
-        value = {username}
-        onChange = {onChangeUsername}
+        type="text"
+        name="username"
+        placeholder="사용자명"
+        value={username}
+        onChange={onChangeUsername}
       />
       <input
-        type = "text"
-        name = "message"
-        placeholder = "아무거나 입력해 보세요"
-        value = {message}
-        onChange = {onChangeMessage}
-        onKeyPress = {onKeyPress}
+        type="text"
+        name="message"
+        placeholder="아무거나 입력해 보세요"
+        value={message}
+        onChange={onChangeMessage}
+        onKeyPress={onKeyPress}
       />
-      <button onClick = {onClick}>확인</button>
+      <button onClick={onClick}>확인</button>
     </div>
   )
 }
@@ -381,21 +381,21 @@ const EventPractice = () => {
     <div>
       <h1>이벤트 연습</h1>
       <input
-        type = "text"
-        name = "username"
-        placeholder = "사용자명"
-        value = {username}
-        onChange = {onChange}
+        type="text"
+        name="username"
+        placeholder="사용자명"
+        value={username}
+        onChange={onChange}
       />
       <input
-        type = "text"
-        name = "message"
-        placeholder = "아무거나 입력해 보세요"
-        value = {message}
-        onChange = {onChange}
-        onKeyPress = {onKeyPress}
+        type="text"
+        name="message"
+        placeholder="아무거나 입력해 보세요"
+        value={message}
+        onChange={onChange}
+        onKeyPress={onKeyPress}
       />
-      <button onClick = {onClick}>확인</button>
+      <button onClick={onClick}>확인</button>
     </div>
   );
 };
