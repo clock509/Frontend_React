@@ -21,6 +21,40 @@ import ScrollBox from './ScrollBox';
 //(2)스크롤 박스 조작하기
 //(3)Canvas 요소에 그림 그리기 등
 
+/** 4-2. ref 사용 */
+//  ref를 사용하는 방법은 두 가지이다.
+//
+//  (1)콜백 함수를 통한 ref 설정
+//  ref를 달고자 하는 요소에 ref라는 콜백 함수를 props로 전달해 주면 된다. 이 콜백 함수는 ref값을 파라미터로 전달받는다.
+//  그리고 함수 내부에서 파라미터로 받은 ref를 컴포넌트의 멤버 변수로 설정해준다.
+//     ex. <input ref={(ref) => {this.input=ref}} />
+//  여기서 this.input은 input 요소의  DOM을 가리킨다.
+//  ref의 이름은 DOM 타입과 관계 없이 this.superman=ref 처럼 자유롭게 지정할 수 있다.
+//
+//  (2)createRef를 통한 ref 설정
+//  리액트 v16.3부터 도입된 내장함수 createRef() 함수 기능을 사용하는 방법(이전 버전 코드에서는 작동하지 않는다).
+//  (ex)
+//  
+//  import React, { Component } from 'react';
+//  
+//  class RefSample extends Component {
+//     input = React.createRef(); // 1. 우선, 컴포넌트 내부에서 멤버 변수로 React.createRef()를 담아준다.
+//  
+//     handleFocus = () => {
+//       this.input.current.focus(); // 3. ref를 설정해 둔 DOM에 접근하려면 this.input.current를 넣어 조회한다. 콜백 함수를 쓸 때와 달리 .current를 넣어 줘야 한다.
+//     }
+//  
+//     render() {
+//       return (
+//         <div>
+//           <input ref={this.input} /> // 2. 해당 멤버 변수를 ref를 달고자 하는 요소에 ref props로 넣어 주면 ref 설정이 완료된다.
+//         </div>
+//      );
+//    }
+//  } 
+//  
+//  export default RefSample;
+
 
 // 4-3. 컴포넌트에 ref 달기
 //ScrollBox 컴포넌트를 렌더링한 다음, ScrollBox에 ref를 달고 버튼을 만들어 누르면 ScrollBox 컴포넌트의 scrollToBottom 메서드를 실행함.
