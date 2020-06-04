@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './ValidationSample.css';
 
+
+// 4-1. ref는 어떤 상황에 사용해야 하는가? 관련 예제 컴포넌트
 // ValidationSample 컴포넌트 만들고 ->  input에 ref를 달고 -> 버튼을 누를 때마다 input에 포커스를 준다.
 class ValidationSample extends Component {
   state = {

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+//4-3. 컴포넌트에 ref 달기 관련 예제 컴포넌트
 //ScrollBox 컴포넌트: JSX 인라인 스타일링 문법으로 스크롤 박스를 만든다.
 //ScrollBox 컴포넌트 만들기 -> ScrollBox 컴포넌트에 ref 달기 -> ref를 이용하여 컴포넌트 내부 메서드 호출하기
 class ScrollBox extends Component {
@@ -33,7 +34,8 @@ class ScrollBox extends Component {
       //최상위 DOM에 ref를 달아 준다.
       <div
         style={style}
-        ref={(ref) => { this.box = ref }}>
+        ref={(ref) => { this.box = ref }}
+      >
         <div style={innerStyle} />
       </div>
     );
