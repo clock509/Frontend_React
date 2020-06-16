@@ -49,10 +49,30 @@ const App = () => {
     [todos],
   );
 
+  //onRemove: id로 항목 지우는 함수 //id를 파라미터로 받아와서 같은 id를 지닌 항목을 todos 배열에서 삭제.
+  const onRemove = useCallback(
+    id => {
+      setTodos(todos.filter(todo => todo.id !== id));
+    },
+    [todos]
+  );
+
+  //onToggle: 수정 기능
+  const onToggle = useCallback(
+    id => {
+      setTodos(
+        todos.map(todo =>
+          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
+        ),
+      );
+    },
+    [todos]
+  );
+
   return (
     <TodoTemplate>
       <TodoInsert onInsert={onInsert} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
     </TodoTemplate>
   );
 };
