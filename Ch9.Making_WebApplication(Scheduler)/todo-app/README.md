@@ -2,7 +2,7 @@
 
 Create a project by following:
 
-`$ yarn start`
+`$ yarn create react-app todo-app`
 
 Then move to todo-app directory, and install some libraries(node-sass, classnames, react-icons).
 
