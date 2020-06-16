@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import SassComponent from './SassComponent';
+import CSSModule from './CSSModule';
 
 /** Ch8. Component Styling
  * 컴포넌트 스타일링 방식 4가지
@@ -90,20 +91,78 @@ import SassComponent from './SassComponent';
  */
 
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <SassComponent />
-      </div>
-    );
-  }
-}
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <SassComponent />
+//       </div>
+//     );
+//   }
+// }
 
 /** 8-2-1. utils 함수 분리하기
  * 여러 파일에서 사용될 수 있는 Sass 변수와 믹스인은 다른 파일로 따로 분리하여 작성한 뒤 필요한 곳에서 불러와 사용할 수 있다.
  * src/styles 디렉터리를 생성하고, 그 안에 utils.scss 파일을 만든다. 그 파일에 SassComponents.scss에 작성했던 변수와 믹스인을 잘라 이동시켜본다.
  */
 
+/** 8-2-2. sass-loader 설정 커스터마이징하기
+ * 반드시 필요한 작업은 아님.
+ * 프로젝트 디렉터리가 많아져 구조가 깊어진다면, import 할 때 '../../../../styles/utils'처럼 한참 상위폴더로 거슬러가야 한다는 단점이 있음.
+ * 웹팩에서 Sass를 처리하는 sass-loader의 설정을 커스터마이징함으로써 해결할 수 있음. 즉 상대 경로를 입력할 필요 없이 styles 디렉터리 기준 절대 경로를 사용하여 불러올 수 있음.
+ * 이를 위해서는, 숨겨진 세부 설정을 꺼내주어야 한다(create-react-app으로 만든 프로젝트는 프로젝트 구조의 복잡도를 낮추기 위해 세부 설정이 모두 숨겨져 있다).
+ * 프로젝트 디렉터리에 yarn eject 명령어를 통해 세부 설정을 밖으로 꺼내는 작업을 하자.
+ * 
+ * create-react-app에서는 기본적으로 Git 설정이 되어있는데, yarn eject를 사용하려면 Git에 커밋되지 않은 변화가 없는 상태여야 한다.
+ * VS Code 좌측의 Git UI를 사용하거나 터미널을 활용해 지금까지 한 작업을 커밋하자.
+ * 
+ * $ git add .
+ * $ git commit -m "Commit before yarn eject"
+ * 
+ * 아래 작업은 프로젝트 디렉터리(Ch8.Component_styling/styling-react/) 에서 진행하자.
+ * $ yarn eject
+ * $ react-srcipts eject
+ * 
+ * 이 작업 후에는 프로젝트 디렉터리에 config라는 디렉터리가 생성되었을 것이다. 그 안에서 webpack.config.js를 열어보자.
+ * Ctrl+F로 sassRegex를 검색하여 두 번째 탐색 결과의 코드 부분을 수정해 보자. 
+ * use: getStyleLoaders(...) 부분의 'sass-loader'를 변경한다. //설정 변경이 완료되면 서버를 껐다가 재시작하자. 
+ *      *** 만약 yarn eject 이후 서버가 제대로 시작되지 않는다면, 프로젝트 디렉터리의 node_modules 디렉터리를 삭제한 다음, yarn install을 실행한 후 npm start(혹은 yarn start)로 실행해 보자.
+ * 
+ * 이제, utils.scss 파일을 불러올 때 현재 수정 중인 scss 파일 경로가 어디에 위치하더라도 상대 경로를 입력할 필요가 없다.
+ * SassComponent.scss에서 @import './styles/utils'; 대신 @import 'utils.scss';만 적어줘도 된다.
+ * 
+ * 그런데, 새 파일을 생성할 때마다 utils.scss를 포함시키는 것 마저도 귀찮다면: sass-loader의 data 옵션을 설정하면 Sass 파일을 불러올 때마다 코드 맨 윗 부분에 특정 코드를 포함시켜 준다.
+ */
+
+/** 8-2-3. node_modules에서 라이브러리 불러오기
+ * yarn을 통해 설치한 라이브러리를 사용하는 가장 기본적인 방법: 상대경로를 이용해 node_modules까지 들어가서 불러오기
+ * ex) @import '../../../node_modules/library/styles';
+ * 그러나 스타일 파일이 깊은 디렉터리에 위치할수록, 이런 구조는 불편하다. 이때, 물결 문자(~)를 사용하면 사용이 쉽다.
+ * ex) @import '~/library/styles';
+ * 물결 문자를 사용하면 자동으로 ndoe_modules에서 라이브러리 디렉터리를 탐지하여 스타일을 볼러울 수 있다.
+ * 
+ * 두 가지 라이브러리를 설치하고 사용해 보자(include-media: 반응형 디자인을 쉽게 만들어 주는 라이브러리, open-color: 색상 팔레트)
+ * $ yarn add open-color include-media
+ * 
+ * 그 다음 utils.scss에서 물결 표시를 사용하여 라이브러리를 불러오자.
+ * 참고로, Sass 라이브러리를 불러올 때는 node_modules 내부 라이브러리 경로 안에 들어있는 scss 파일을 불러와야 한다. 
+ * 보통 scss 파일 경로가 어디에 위치했는지 라이브러리의 공식 매뉴얼에서 알려주지 않을 때가 많다. 따라서 직접 경로로 들어가서 확인해야 한다.
+ * */
+
+/** 8-3. CSS module
+ * CSS를 불러와서 사용할 때 클래스 이름을 [파일 이름]_[클래스 이름]_[해시 값] 형태의 고유한 값으로 만들어서, 컴포넌트 스타일 클래스 이름의 중첩 현상을 자동으로 방지해주는 기술.
+ * 파일 이름을 .module.css 확장자로 저장하면 CSS Module이 자동 적용됨(v2 버전 이상부터)
+ * CSSModule.module.css 라는 파일을 src 디렉터리에 생성해 보자.
+ */
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <CSSModule />
+      </div>
+    );
+  }
+}
 
 export default App;

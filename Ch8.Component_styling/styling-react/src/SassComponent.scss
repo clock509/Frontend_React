@@ -57,10 +57,58 @@
 //   }
 // }
 
-/** 8-2.-1 utils 함수 분리하기 관련 예제 */
-@import './styles/utils';
+/** 8-2-1. utils 함수 분리하기 관련 예제 */
+//@import './styles/utils';
+//@import 'utils.scss';  //8-2-2. sass-loader 커스터마이징이 제대로 되었는지 확인
+// .SassComponent {
+//   display: flex;
+//   .box {
+//     background: red; //일반 CSS에서는 .SassComponent .box와 마찬가지
+//     cursor: pointer;
+//     transition: all 0.3s ease-in;
+//     &.red {
+//       // .red 클래스가 .box와 함께 사용되었을 때
+//       background: $red;
+//       @include square(1);
+//     }
+//     &.orange {
+//       background: $orange;
+//       @include square(2);
+//     }
+//     &.yellow {
+//       background: $yellow;
+//       @include square(3);
+//     }
+//     &.green {
+//       background: $green;
+//       @include square(4);
+//     }
+//     &.blue {
+//       background: $blue;
+//       @include square(5);
+//     }
+//     &.indigo {
+//       background: $indigo;
+//       @include square(6);
+//     }
+//     &.violet {
+//       background: $violet;
+//       @include square(7);
+//     }
+//     &:hover {
+//       // .box에 마우스를 올렸을 때
+//       background: whitesmoke;
+//     }
+//   }
+// } //믹스인, 변수들은 utils.scss에 분리되어 있지만 분리되어 있다.
+
+/** 8-2-3. node_modules에서 라이브러리 불러오기 관련 예제 */
 .SassComponent {
   display: flex;
+  background: $oc-gray-2; //open-colors 팔레트 라이브러리에서 배경색을 불러옴.
+  @include media('<768px') { //단, 화면 크기가 768px 미만이 되면 배경색을 아래와 같이 바꿔줌.
+    background: $oc-pink-9;
+  }
   .box {
     background: red; //일반 CSS에서는 .SassComponent .box와 마찬가지
     cursor: pointer;
@@ -100,4 +148,3 @@
     }
   }
 }
-//믹스인, 변수들은 utils.scss에 분리되어 있지만 분리되어 있다.
